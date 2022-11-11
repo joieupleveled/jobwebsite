@@ -4,17 +4,26 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "webpack --config webpack.config.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "dotenv ley"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@upleveled/eslint-config-upleveled": "^3.1.0",
+    "bcrypt": "^5.1.0",
+    "cookie": "^0.5.0",
+    "csrf": "^3.1.0",
+    "dotenv-cli": "^6.0.0",
     "dotenv-safe": "^8.2.0",
-    "express": "^4.18.2",
-    "next": "13.0.0",
+    "js-cookie": "^3.0.1",
+    "ley": "^0.8.1",
+    "next": "12.3.1",
+    "postgres": "3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sharp": "^0.31.1"
+    "sharp": "^0.31.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
@@ -26,7 +35,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.40.1",
     "@typescript-eslint/parser": "5.40.1",
-    "@upleveled/eslint-config-upleveled": "^3.1.0",
+    "@upleveled/eslint-config-upleveled": "^3.3.8",
     "@upleveled/eslint-plugin-upleveled": "2.1.6",
     "eslint": "8.25.0",
     "eslint-config-next": "13.0.0",
@@ -54,5 +63,10 @@
     "eslint-plugin-react": "7.31.10",
     "eslint-plugin-react-hooks": "4.6.0",
     "@typescript-eslint/utils": "5.40.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
