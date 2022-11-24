@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 import css from '../components/layout.module.css';
 import Header from './Header';
 
@@ -6,7 +7,7 @@ export default function Layout(props) {
   return (
     <>
       <Head>
-        <title>Indeed Jobs</title>
+        <title>Indeed Jobs | </title>
       </Head>
       <div className={css.container}>
         <Header />

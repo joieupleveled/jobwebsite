@@ -20,3 +20,19 @@ VALUES
 
 
 SELECT * FROM jobs
+
+--Create a table sessions
+CREATE TABLE sessions(
+  id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	token varchar(400) NOT NULL,
+	expire_timestamp timestamp(50),
+	user_id varchar(50),
+
+	description varchar(500)
+ );
+
+--Insert a table
+INSERT INTO jobs
+  (company, title, type, location, salary, description)
+VALUES
+  ('UpLeveled', 'Web Developer', 'Full-time', 'Vienna', 40000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam erat velit scelerisque in dictum non. Pellentesque massa placerat duis ultricies lacus. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. Purus semper eget duis at. Et ligula ullamcorper malesuada proin libero. Varius sit amet mattis vulputate enim nulla. Nunc sed id semper risus in hendrerit gravida. A diam sollicitudin tempor id.');

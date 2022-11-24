@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
-import { GetServerSideProps, GetServerSidePropsResult } from 'next';
+import { GetServerSidePropsResult } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from '../../components/Header';
 import { getJobs, Job } from '../../database/jobs';
 
 const jobStyles = css`
@@ -30,14 +29,22 @@ export default function Jobs(props: Props) {
         <title>Jobs</title>
         <meta name="Description" content="List page of all jobs" />
       </Head>
-      {props.jobs.map((job: any) => {
+      <h1>Listed Jobs</h1>
+
+      {props.jobs.map((job) => {
         return (
-          <div key={`job-${job.id}`} css={jobStyles}>
+          <div
+            data-test-id={`job-type-${job.type}`}
+            key={`job-${job.id}`}
+            css={jobStyles}
+          >
             <h2>
               <Link href={`/jobs/${job.id}`}>{job.title}</Link>
             </h2>
+
             <h3>Company: {job.company}</h3>
             <span>Job Type: {job.type}</span>
+            <span>Job Description: {job.description}</span>
             <p>Annual Salary: EUR {job.salary}</p>
           </div>
         );

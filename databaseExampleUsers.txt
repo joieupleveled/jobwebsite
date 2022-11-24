@@ -1,0 +1,9 @@
+CREATE TABLE users (
+      id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+      username varchar(90) NOT NULL UNIQUE,
+      first_name varchar(90) NOT NULL UNIQUE,
+      last_name varchar(90) NOT NULL UNIQUE,
+      email_address varchar(90) NOT NULL UNIQUE,
+      password_hash varchar(70) NOT NULL UNIQUE
+    )
+  ;

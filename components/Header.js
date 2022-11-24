@@ -2,37 +2,35 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const navStyles = css`
-  background-color: #972d07;
-  border: 20px;
-  margin: 100px 100px;
-  padding: 10px;
+  background-color: #ddd;
+  border-radius: 6px;
+  margin: 20px 10px;
+  padding: 15px;
+  display: flex;
+  gap: 70px;
 
   > a {
     margin-left: 13px;
-    color: white;
-    padding: 65px;
-    font-size: large;
-    font-weight: 600;
+  }
+  > div {
+    margin-right: auto;
+    display: flex;
+    gap: 70px;
   }
 `;
 
-const icon = css`
-  height: 40px;
-`;
-
-export default function Header(props) {
+export default function Header() {
   return (
     <header>
       <nav css={navStyles}>
         <div>
           <Link href="/">Home</Link>
           <Link href="/jobs">Jobs</Link>
-          <Link href="/about">About</Link>
-          <div style={{ marginLeft: 'auto', display: 'flex', gap: 15 }}>
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
-          </div>
         </div>
+        <Link href="/register">Register</Link>
+        <Link href="/addjobs">Add Job</Link>
+        <Link href="/login">Login</Link>
+        <Link href="/logout">Logout</Link>
       </nav>
     </header>
   );

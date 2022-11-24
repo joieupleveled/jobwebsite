@@ -2,9 +2,17 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../../components/layout';
 import { getJobById, Job } from '../../database/jobs';
 import { parseIntFromContextQuery } from '../../utils/contextQuery';
+
+// const foundJob = {
+//   id: 1,
+//   title: 'Developer',
+//   company: 'Upleveld',
+//   salary: 40000,
+//   description: 'testdescription',
+//   type: 'full-time',
+// };
 
 const jobStyles = css`
   border-radius: 20%;
@@ -28,8 +36,8 @@ type Props =
       error: string;
     };
 
-//
 export default function SingleJob(props: Props) {
+  console.log(props);
   if ('error' in props) {
     return (
       <div>
@@ -42,29 +50,27 @@ export default function SingleJob(props: Props) {
       </div>
     );
   }
-  //
   return (
     <div css={jobStyles}>
       <Head>
-        <title>
-          {props.job.title}, the {props.job.company}
-        </title>
+        {props.job.title}, the {props.job.company}
       </Head>
 
       <h2>{props.job.title}</h2>
       <div>Id: {props.job.company}</div>
       <div>Type: {props.job.type}</div>
-      <div>Type: {props.job.salary}</div>
-      <div>Type: {props.job.description}</div>
+      <div>Salary: {props.job.salary}</div>
+      <div>Description: {props.job.description}</div>
     </div>
   );
 }
 
-export async function getServersideProps(
+export async function getServerSideProps(
   context: GetServerSidePropsContext,
 ): Promise<GetServerSidePropsResult<Props>> {
-  const jobId = parseIntFromContextQuery(context.query.jobId);
-
+  const jobId = parseIntFromContextQuery(context.query.jobsId);
+  console.log('jobId', jobId);
+  console.log('context', context.query);
   if (typeof jobId === 'undefined') {
     context.res.statusCode = 404;
     return {
@@ -84,7 +90,7 @@ export async function getServersideProps(
       },
     };
   }
-
+  console.log(foundJob);
   return {
     props: {
       job: foundJob,

@@ -1,5 +1,5 @@
 import { css, Global } from '@emotion/react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (

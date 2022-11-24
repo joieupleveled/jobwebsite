@@ -1,15 +1,12 @@
-// This only simulates a database
-// DO NOT COPY THIS FILE FOR THE PROJECT
-// Use PostgreSQL-similar to this database
-
 import { sql } from './connect';
 
-// Define the structure of wood object so we can use it
+// Define the structure of job so we can use it
 export type Job = {
   id: number;
   company: string;
   title: string;
   type: string;
+  location: string;
   salary: number;
   description: string;
 };
@@ -39,6 +36,26 @@ export async function getJobById(id: number) {
   `;
   return job;
 }
+export async function createAddjob(
+  company: string,
+  title: string,
+  type: string,
+  location: string,
+  salary: number,
+  description: string,
+) {
+  const [createJob] = await sql<{ id: number; username: string }[]>`
+  INSERT INTO jobs
+    (company, title, type, location, salary, description)
+  VALUES
+    (${company}, ${title}, ${type}, ${location}, ${salary}, ${description})
+  RETURNING
+    *
+`;
+
+  return createJob;
+}
+
 // Now, we are getting this data from the database
 
 // export const jobs = [
