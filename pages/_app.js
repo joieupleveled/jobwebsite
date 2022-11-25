@@ -1,3 +1,4 @@
+import '../styles/globals.css';
 import { css, Global } from '@emotion/react';
 import Layout from '../components/Layout';
 

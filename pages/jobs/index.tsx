@@ -3,6 +3,7 @@ import { GetServerSidePropsResult } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getJobs, Job } from '../../database/jobs';
+import { Layout } from '../components/Layout';
 
 const jobStyles = css`
   border: 1px solid #ccc;
