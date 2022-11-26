@@ -14,19 +14,19 @@ import { parseIntFromContextQuery } from '../../utils/contextQuery';
 //   type: 'full-time',
 // };
 
-const jobStyles = css`
-  border-radius: 20%;
-  border: 1px solid #ccc;
-  padding: 20px;
+// const jobStyles = css`
+//   border-radius: 20%;
+//   border: 1px solid #ccc;
+//   padding: 20px;
 
-  h2 {
-    margin-top: 0;
-  }
+//   h2 {
+//     margin-top: 0;
+//   }
 
-  & + & {
-    margin-top: 25px;
-  }
-`;
+//   & + & {
+//     margin-top: 25px;
+//   }
+// `;
 
 type Props =
   | {
@@ -51,7 +51,7 @@ export default function SingleJob(props: Props) {
     );
   }
   return (
-    <div css={jobStyles}>
+    <div>
       <Head>
         {props.job.title}, the {props.job.company}
       </Head>

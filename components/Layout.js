@@ -7,7 +7,7 @@ export default function Layout(props) {
   return (
     <>
       <Head>
-        <title>Indeed Jobs | </title>
+        <title>Jobs </title>
       </Head>
       <div className={css.container}>
         <Header />

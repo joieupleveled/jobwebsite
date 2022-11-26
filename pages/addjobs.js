@@ -5,6 +5,34 @@ import { useState } from 'react';
 
 // import { getValidSessionByToken } from '../database/sessions';
 
+const formstyle = css`
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.2rem;
+`;
+
+const label = css`
+  display: block;
+  margin-top: 30px;
+  font-size: 23px;
+  font-weight: 500;
+`;
+const button = css`
+  margin-top: 50px;
+  width: 50%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 export default function AddJob() {
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
@@ -57,7 +85,7 @@ export default function AddJob() {
         <meta name="description" content="Register new users" />
       </Head>
       <h1>Add new job</h1>
-      {/* {errors.map((error) => {
+      {errors.map((error) => {
         return (
           <p
             css={css`
@@ -70,77 +98,81 @@ export default function AddJob() {
             Error: {error.message}
           </p>
         );
-      })} */}
-      <label>
-        Company
-        <input
-          value={company}
-          onChange={(event) => {
-            setCompany(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
-      <label>
-        Title
-        <input
-          value={title}
-          onChange={(event) => {
-            setTitle(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
-      <label>
-        Type
-        <input
-          value={type}
-          onChange={(event) => {
-            setType(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
-      <label>
-        Location
-        <input
-          value={location}
-          onChange={(event) => {
-            setLocation(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
-      <label>
-        Salary
-        <input
-          placeholder="please enter numbers only, else it won't be added"
-          value={salary}
-          onChange={(event) => {
-            setSalary(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
-      <label>
-        Description
-        <textarea
-          placeholder="please describe your company and the relevant job details in short sentences"
-          value={description}
-          onChange={(event) => {
-            setDescription(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <br />
+      })}
+      <form css={formstyle}>
+        <label>
+          Company
+          <input
+            value={company}
+            onChange={(event) => {
+              setCompany(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Title
+          <input
+            value={title}
+            onChange={(event) => {
+              setTitle(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Type
+          <input
+            value={type}
+            onChange={(event) => {
+              setType(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Location
+          <input
+            value={location}
+            onChange={(event) => {
+              setLocation(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Salary
+          <input
+            placeholder="please enter numbers only, else it won't be added"
+            value={salary}
+            onChange={(event) => {
+              setSalary(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Description
+          <textarea
+            placeholder="expand this field to add text"
+            value={description}
+            onChange={(event) => {
+              setDescription(event.currentTarget.value);
+            }}
+          />
+        </label>
 
-      <button
-        onClick={async () => {
-          await addjobHandler();
-        }}
-      >
-        Add job
-      </button>
+        <br />
+
+        <button
+          css={button}
+          onClick={async () => {
+            await addjobHandler();
+          }}
+        >
+          Add job
+        </button>
+      </form>
     </>
   );
 }

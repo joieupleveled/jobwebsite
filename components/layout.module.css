@@ -4,14 +4,6 @@
 }
 
 .header {
-  font-size: 1.5rem;
-  font-family: 'Poppins';
-  color: black;
-  margin: 2rem 0;
-}
-
-.header-brand {
-  font-weight: bold;
 }
 
 .main {
@@ -25,26 +17,12 @@
   color: var(--gray);
   margin: 1.75rem;
 }
-
-.not-found {
-  font-family: 'Space Mono';
-  min-height: 70vh;
+.navStyles {
+  width: 100%;
   display: flex;
-}
-
-.not-found h2 {
-  font-weight: bold;
-  font-size: 4rem;
-  color: var(--black);
-}
-
-.not-found p {
-  font-size: 1.5rem;
-}
-
-.back-button {
-  background-color: var(--black);
-  color: white;
-  padding: 1.5rem 3rem;
-  text-transform: uppercase;
+  justify-content: space-between;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #fff;
 }

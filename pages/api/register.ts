@@ -30,7 +30,9 @@ export default async function handler(
     if (user) {
       return response
         .status(401)
-        .json({ errors: [{ message: 'username is already taken' }] });
+        .json({
+          errors: [{ message: 'username or password is already taken' }],
+        });
     }
 
     //3. We hash the password

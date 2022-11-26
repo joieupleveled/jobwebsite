@@ -57,47 +57,51 @@ export default function Register(props: Props) {
         <title>Register new user</title>
         <meta name="description" content="Register new users" />
       </Head>
-      <h1>Register new user</h1>
-      {/* {errors.map((error) => {
-        return (
-          <p
-            css={css`
-              background-color: red;
-              color: white;
-              padding: 5px;
-            `}
-            key={error.message}
-          >
-            Error: {error.message}
-          </p>
-        );
-      })} */}
-      <label>
-        username
-        <input
-          value={username}
-          onChange={(event: any) => {
-            setUsername(event.currentTarget.value.toLowerCase());
+      <div>
+        <h1>Register new user</h1>
+        {errors.map((error) => {
+          return (
+            <p
+              css={css`
+                background-color: red;
+                color: white;
+                padding: 5px;
+              `}
+              key={error.message}
+            >
+              Error: {error.message}
+            </p>
+          );
+        })}
+
+        <label>
+          username
+          <input
+            value={username}
+            onChange={(event: any) => {
+              setUsername(event.currentTarget.value.toLowerCase());
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          password
+          <input
+            value={password}
+            onChange={(event) => {
+              setPassword(event.currentTarget.value);
+            }}
+          />
+        </label>
+
+        <button
+          onClick={async () => {
+            await registerHandler();
           }}
-        />
-      </label>
-      <br />
-      <label>
-        password
-        <input
-          value={password}
-          onChange={(event) => {
-            setPassword(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <button
-        onClick={async () => {
-          await registerHandler();
-        }}
-      >
-        Register
-      </button>
+        >
+          Register
+        </button>
+      </div>
     </>
   );
 }

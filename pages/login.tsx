@@ -3,9 +3,53 @@ import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { LoginResponseBody } from './api/login';
 
 // import { getValidSessionByToken } from '../database/sessions';
 // import { RegisterResponseBody } from './api/register';
+const formstyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const button = css`
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #64748b;
+  }
+`;
+
+const input = css`
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+`;
+
+const label = css`
+  display: block;
+  margin-top: 30px;
+  font-size: 23px;
+  font-weight: 500;
+`;
+
+const placeholder = css`
+  color: #e5e5e5;
+`;
 
 type Props = {
   refreshUserProfile: () => Promise<void>;
@@ -69,49 +113,36 @@ export default function Login(props: Props) {
           </p>
         );
       })}
-      <label>
-        username
-        <input
-          value={username}
-          onChange={(event: any) => {
-            setUsername(event.currentTarget.value.toLowerCase());
+      <form css={formstyle}>
+        <label>
+          username
+          <input
+            placeholder="Email or Phone"
+            value={username}
+            onChange={(event: any) => {
+              setUsername(event.currentTarget.value.toLowerCase());
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          password
+          <input
+            value={password}
+            placeholder="password"
+            onChange={(event) => {
+              setPassword(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <button
+          onClick={async () => {
+            await loginHandler();
           }}
-        />
-      </label>
-      <br />
-      <label>
-        password
-        <input
-          value={password}
-          onChange={(event) => {
-            setPassword(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <button
-        onClick={async () => {
-          await loginHandler();
-        }}
-      >
-        Log in
-      </button>
+        >
+          Log in
+        </button>
+      </form>
     </>
   );
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // const token = context.req.cookies.sessionToken;
-
-  // if (token && (await getValidSessionByToken(token))) {
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: true,
-  //     },
-  //   };
-  // }
-
-  return {
-    props: {},
-  };
 }
