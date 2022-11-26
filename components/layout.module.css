@@ -1,13 +1,4 @@
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
-
 .header {
-}
-
-.main {
-  min-height: 70vh;
 }
 
 .footer {
@@ -15,14 +6,5 @@
   font-weight: 600;
   text-align: center;
   color: var(--gray);
-  margin: 1.75rem;
-}
-.navStyles {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: black;
-  padding: 14px 16px;
-  text-decoration: none;
-  background-color: #fff;
+  padding: 1.75rem;
 }

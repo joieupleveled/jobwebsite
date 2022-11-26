@@ -1,0 +1,55 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: auto;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.registerForm h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.registerForm label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.registerForm label span {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.registerForm label input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.registerForm label input:focus {
+  outline: none;
+  border-color: #1e86ff;
+}
+
+.registerForm button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

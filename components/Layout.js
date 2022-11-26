@@ -9,9 +9,9 @@ export default function Layout(props) {
       <Head>
         <title>Jobs </title>
       </Head>
-      <div className={css.container}>
+      <div className={css.main}>
         <Header />
-        <main className={css.main}>{props.children}</main>
+        <main>{props.children}</main>
         <footer className={css.footer}>Joie @ Decena</footer>
       </div>
     </>

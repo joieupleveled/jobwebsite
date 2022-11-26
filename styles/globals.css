@@ -13,8 +13,6 @@
 
 html,
 body {
-  padding: 50;
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--bg);
@@ -22,7 +20,15 @@ body {
   cursor: pointer;
   margin-right: auto;
   display: absolute;
-  gap: 10px;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  padding: 0.5rem;
 }
 
 a {
@@ -53,13 +59,26 @@ h5 {
   }
 }
 
-header {
-  background-color: #ddd;
+/* =======================
+SECTION === 'BUTTON STYLES' === SECTION
+======================= */
+
+.btn-primary {
+  background-color: #1e86ff;
+  color: white;
+  border: none;
   border-radius: 6px;
-  margin: 20px 10px;
-  padding: 15px;
-  display: flex;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
   margin-right: auto;
   display: flex;
-  gap: 80px;
+  gap: 10px;
+  margin: 0 auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  scale: 1.1;
 }
