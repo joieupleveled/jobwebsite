@@ -1,6 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Next.js jobwebsite
 
-## Getting Started
+Description
+This job website is was created with Next.js. It has:
+
+a home page,
+a job list page,
+a page for each single item with a description and price
+a login page,
+a logout page,
+a add a job page,
+a registration page.
+
 
 First, run the development server:
 
