@@ -11,6 +11,14 @@ a logout page,
 a add a job page,
 a registration page.
 
+Technologies used:
+
+Next.js
+Postgres.js
+Ley
+dotenv
+Emotion
+GitHub Actions
 
 First, run the development server:
 
