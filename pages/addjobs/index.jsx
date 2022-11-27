@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { getValidSessionByToken } from '../../database/sessions';
 import addJobsStyles from './addJobsStyles.module.css';
 
 // import { getValidSessionByToken } from '../database/sessions';
@@ -75,7 +76,7 @@ export default function AddJob() {
       return await router.push(returnTo);
     }
     // refresh the user on state
-    // await props.refreshUserProfile();
+    await props.refreshUserProfile();
     // redirect user to user profile
     await router.push(`/jobs`);
   }
@@ -180,16 +181,16 @@ export default function AddJob() {
 }
 
 export async function getServerSideProps(context) {
-  // const token = context.req.cookies.sessionToken;
+  const token = context.req.cookies.sessionToken;
 
-  // if (token && (await getValidSessionByToken(token))) {
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: true,
-  //     },
-  //   };
-  // }
+  if (token && (await getValidSessionByToken(token))) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
 
   return {
     props: {},

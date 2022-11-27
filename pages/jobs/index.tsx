@@ -60,9 +60,9 @@ export async function getServerSideProps(): Promise<
   return {
     // Anything that you write in this props object
     // will become the props that are passed to
-    // the `Animals` page component above
+    // the `Jobs` page component above
     props: {
-      // First prop, containing all animals
+      // First prop, containing all jobs
       jobs: jobs,
       // Second prop, example
       // abc: 123,

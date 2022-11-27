@@ -36,6 +36,53 @@ export async function getJobById(id: number) {
   `;
   return job;
 }
+
+// // Get a single job by id and valid session token
+// export async function getJobByIdAndValidSessionToken(
+//   id: number,
+//   token: string | undefined,
+// ) {
+//   if (!token) return undefined;
+//   // STRETCH: Update this adding a role to the users and matching it with the session token
+//   const [job] = await sql<Job[]>`
+//     SELECT
+//       jobs.*
+//     FROM
+//       jobs
+//     INNER JOIN
+//       sessions ON (
+//         sessions.token = ${token} AND
+//         sessions.expiry_timestamp > now()
+//       )
+//     WHERE
+//       jobs.id = ${id}
+//   `;
+//   return job;
+// }
+
+// Get a single job by id and valid session token
+export async function getJobByIdAndValidSessionToken(
+  id: number,
+  token: string | undefined,
+) {
+  if (!token) return undefined;
+  // STRETCH: Update this adding a role to the users and matching it with the session token
+  const [job] = await sql<Job[]>`
+    SELECT
+      jobs.*
+    FROM
+      jobs
+    INNER JOIN
+      sessions ON (
+        sessions.token = ${token} AND
+        sessions.expiry_timestamp > now()
+      )
+    WHERE
+      jobs.id = ${id}
+  `;
+  return job;
+}
+
 export async function createAddjob(
   company: string,
   title: string,
@@ -54,6 +101,36 @@ export async function createAddjob(
 `;
 
   return createJob;
+}
+
+export async function updateJobById(
+  id: number,
+  firstName: string,
+  type: string,
+  accessory: string,
+) {
+  const [job] = await sql<Job[]>`
+    UPDATE
+      job
+      first_name = ${firstName},
+      type = ${type},
+      accessory = ${accessory}
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return job;
+}
+
+export async function deleteJobById(id: number) {
+  const [job] = await sql<Job[]>`
+    DELETE FROM
+      jobs
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return job;
 }
 
 // Now, we are getting this data from the database

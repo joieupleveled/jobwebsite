@@ -1,11 +1,10 @@
-// import crypto from 'node:crypto';
+import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-// import { createSession } from '../../database/sessions';
+import { createSession } from '../../database/sessions';
 import { getUserWithPasswordHashByUsername } from '../../database/users';
-
-// import { createSerializedRegisterSessionTokenCookie } from '../../utils/cookies';
-// import { createCsrfSecret } from '../../utils/csrf';
+import { createSerializedRegisterSessionTokenCookie } from '../../utils/cookies';
+import { createCsrfSecret } from '../../utils/csrf';
 
 export type LoginResponseBody =
   | { errors: { message: string }[] }
@@ -29,7 +28,7 @@ export default async function handler(
     }
     // 2. get the user by the username
     const user = await getUserWithPasswordHashByUsername(request.body.username);
-
+    console.log('user', user);
     if (!user) {
       return response
         .status(401)
@@ -42,6 +41,8 @@ export default async function handler(
       user.passwordHash,
     );
 
+    console.log('isVaildPassword', isValidPassword);
+
     if (!isValidPassword) {
       return response
         .status(401)
@@ -49,21 +50,22 @@ export default async function handler(
     }
 
     // 4. create a csrf secret
-    // const secret = await createCsrfSecret();
+    const secret = await createCsrfSecret();
     // 5.Create a session token and serialize a cookie with the token
-    // const session = await createSession(
-    //   user.id,
-    //   crypto.randomBytes(80).toString('base64'),
-    //   secret,
-    // );
+    const session = await createSession(
+      user.id,
+      crypto.randomBytes(80).toString('base64'),
+      secret,
+    );
+    console.log('session', session);
+    const serializedCookie = createSerializedRegisterSessionTokenCookie(
+      session.token,
+    );
 
-    // const serializedCookie = createSerializedRegisterSessionTokenCookie(
-    //   session.token,
-    // );
-
+    console.log('serializedCookie', serializedCookie);
     response
       .status(200)
-      // .setHeader('Set-Cookie', serializedCookie)
+      .setHeader('Set-Cookie', serializedCookie)
       .json({ user: { username: user.username } });
   } else {
     response.status(401).json({ errors: [{ message: 'Method not allowed' }] });

@@ -12,9 +12,9 @@ type Props = {
 };
 
 export default function Register(props: Props) {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [emailaddress, setEmailaddress] = useState('');
+  // const [firstname, setFirstname] = useState('');
+  // const [lastname, setLastname] = useState('');
+  // const [emailaddress, setEmailaddress] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
@@ -48,7 +48,7 @@ export default function Register(props: Props) {
       return await router.push(returnTo);
     }
     // refresh the user on state
-    // await props.refreshUserProfile();
+    await props.refreshUserProfile();
     // redirect user to user profile
     await router.push(`/jobs`);
   }
@@ -116,7 +116,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (token && (await getValidSessionByToken(token))) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/jobs',
         permanent: true,
       },
     };

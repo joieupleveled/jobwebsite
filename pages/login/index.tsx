@@ -3,54 +3,9 @@ import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { getValidSessionByToken } from '../../database/sessions';
 import { LoginResponseBody } from '../api/login';
 import loginStyles from './loginStyles.module.css';
-
-// import { getValidSessionByToken } from '../database/sessions';
-// import { RegisterResponseBody } from './api/register';
-const formstyle = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const button = css`
-  margin-top: 50px;
-  width: 100%;
-  background-color: #ffffff;
-  color: #080710;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #64748b;
-  }
-`;
-
-const input = css`
-  display: block;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-`;
-
-const label = css`
-  display: block;
-  margin-top: 30px;
-  font-size: 23px;
-  font-weight: 500;
-`;
-
-const placeholder = css`
-  color: #e5e5e5;
-`;
 
 type Props = {
   refreshUserProfile: () => Promise<void>;
@@ -79,20 +34,28 @@ export default function Login(props: Props) {
       setErrors(loginResponseBody.errors);
       return console.log(loginResponseBody.errors);
     }
+
+    console.log(router.query.returnTo);
+
     const returnTo = router.query.returnTo;
+
     if (
       returnTo &&
       !Array.isArray(returnTo) && // Security: Validate returnTo parameter against valid path
       // (because this is untrusted user input)
       /^\/[a-zA-Z0-9-?=/]*$/.test(returnTo)
     ) {
+      // refresh the user on state
+      await props.refreshUserProfile();
       return await router.push(returnTo);
     }
+
     // refresh the user on state
-    // await props.refreshUserProfile();
+    await props.refreshUserProfile();
     // redirect user to user profile
-    await router.push(`/jobs`);
+    await router.push(`/profile-account`);
   }
+
   return (
     <>
       <Head>
@@ -117,9 +80,9 @@ export default function Login(props: Props) {
         <form className={loginStyles.loginForm}>
           <h1>Log in</h1>
           <label>
-            <span>Email/Phone</span>
+            <span>Username</span>
             <input
-              placeholder="Email or Phone"
+              placeholder="Username/Email"
               value={username}
               onChange={(event: any) => {
                 setUsername(event.currentTarget.value.toLowerCase());
@@ -149,4 +112,21 @@ export default function Login(props: Props) {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const token = context.req.cookies.sessionToken;
+
+  if (token && (await getValidSessionByToken(token))) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

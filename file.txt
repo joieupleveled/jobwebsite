@@ -35,7 +35,7 @@ export default function Login(props: Props) {
       return await router.push(returnTo);
     }
     // refresh the user on state
-    // await props.refreshUserProfile();
+    await props.refreshUserProfile();
     // redirect user to user profile
     await router.push(`/jobs`);
   }
@@ -87,16 +87,16 @@ export default function Login(props: Props) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // const token = context.req.cookies.sessionToken;
+  const token = context.req.cookies.sessionToken;
 
-  // if (token && (await getValidSessionByToken(token))) {
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: true,
-  //     },
-  //   };
-  // }
+  if (token && (await getValidSessionByToken(token))) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
 
   return {
     props: {},

@@ -30,6 +30,9 @@ export default function Header() {
           <Link href="/register">
             <button className={navStyles.registerButton}>Register</button>
           </Link>
+          <Link href="/profile-account">
+            <button className={navStyles.profileaccount}>Account</button>
+          </Link>
           <Link href="/login">
             <button className={navStyles.loginButton}>Login</button>
           </Link>
