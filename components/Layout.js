@@ -5,15 +5,16 @@ import Header from './Header';
 
 export default function Layout(props) {
   return (
-    <>
+    <div>
       <Head>
         <title>Jobs </title>
       </Head>
+
       <div className={css.main}>
-        <Header />
+        <Header user={props.user} />
         <main>{props.children}</main>
         <footer className={css.footer}>Joie @ Decena</footer>
       </div>
-    </>
+    </div>
   );
 }

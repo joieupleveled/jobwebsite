@@ -6,6 +6,11 @@
   display: flex;
   margin: 1rem 0;
 }
+.h1 {
+  font-size: 2rem;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
 .header {
   height: 50px;
   width: 100%;
@@ -116,4 +121,9 @@
   .job-description {
     flex-direction: column;
   }
+}
+
+.apply-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

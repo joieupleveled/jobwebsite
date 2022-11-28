@@ -23,7 +23,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <CookieBanner />
       <Layout user={user}>
         {/*
           The "Component" component refers to
@@ -31,6 +30,7 @@ function MyApp({ Component, pageProps }) {
         */}
         <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
+      <CookieBanner />
     </>
   );
 }

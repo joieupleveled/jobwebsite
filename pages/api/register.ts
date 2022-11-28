@@ -1,4 +1,3 @@
-import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createUser, getUserByUsername } from '../../database/users';
@@ -24,27 +23,25 @@ export default async function handler(
         .json({ errors: [{ message: 'username or password not provided' }] });
     }
 
-    //2. Check if th euser already exist
+    // 2. Check if th euser already exist
     const user = await getUserByUsername(request.body.username);
 
     if (user) {
-      return response
-        .status(401)
-        .json({
-          errors: [{ message: 'username or password is already taken' }],
-        });
+      return response.status(401).json({
+        errors: [{ message: 'username or password is already taken' }],
+      });
     }
 
-    //3. We hash the password
+    // 3. We hash the password
     const passwordHash = await bcrypt.hash(request.body.password, 12);
 
-    //4. sql query to create a record
+    // 4. sql query to create a record
     const userWithoutPassword = await createUser(
       request.body.username,
       passwordHash,
     );
-    //5. create a csrf secret
-    //6. Create a session token and serialize a cookie with the token
+    // 5. create a csrf secret
+    // 6. Create a session token and serialize a cookie with the token
 
     response
       .status(200)

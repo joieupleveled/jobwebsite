@@ -11,9 +11,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   console.log(token);
 
+  // To delete the session from the database
   if (token) {
     await deleteSessionByToken(token);
 
+    // To delete the cookie from the browser
     context.res.setHeader(
       'Set-Cookie',
       cookie.serialize('sessionToken', '', {
@@ -25,7 +27,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     redirect: {
-      destination: '/',
+      destination: '/jobs',
       permanent: false,
     },
   };

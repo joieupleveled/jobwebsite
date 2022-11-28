@@ -9,23 +9,14 @@ import { createCsrfSecret } from '../../utils/csrf';
 // import { createSerializedRegisterSessionTokenCookie } from '../../utils/cookies';
 // import { createCsrfSecret } from '../../utils/csrf';
 
-export type AddjobResponseBody = { errors: { message: string }[] } | any;
-// | {
-//     // job: {
-//       id: number;
-//       company: string;
-//       title: string;
-//       type: string;
-//       location: string;
-//       salary: number;
-//       description: string;
-//     // };
-//   };
-// | { job: { title: string } }
-// | { job: { type: string } }
-// | { job: { location: string } }
-// | { job: { salary: number } }
-// | { job: { description: string } };
+export type AddjobResponseBody =
+  | { errors: { message: string }[] }
+  | { job: { company: string } }
+  | { job: { title: string } }
+  | { job: { type: string } }
+  | { job: { location: string } }
+  | { job: { salary: number } }
+  | { job: { description: string } };
 
 export default async function handler(
   request: NextApiRequest,
@@ -63,7 +54,7 @@ export default async function handler(
     }
 
     // 4. sql query to create the record
-    const addjobToDatabase = await createAddjob(
+    const addjobToDatabase: any = await createAddjob(
       request.body.company,
       request.body.title,
       request.body.type,
@@ -89,7 +80,16 @@ export default async function handler(
     response
       .status(200)
       .setHeader('Set-Cookie', serializedCookie)
-      .json({ addjobToDatabase });
+      .json({
+        job: {
+          company: addjobToDatabase.company,
+          title: addjobToDatabase.title,
+          type: addjobToDatabase.type,
+          location: addjobToDatabase.location,
+          salary: addjobToDatabase.salary,
+          description: addjobToDatabase.description,
+        },
+      });
   } else {
     response.status(401).json({ errors: [{ message: 'Method not allowed' }] });
   }

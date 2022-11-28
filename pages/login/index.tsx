@@ -53,7 +53,7 @@ export default function Login(props: Props) {
     // refresh the user on state
     await props.refreshUserProfile();
     // redirect user to user profile
-    await router.push(`/profile-account`);
+    await router.push(`/jobs`);
   }
 
   return (
@@ -77,7 +77,12 @@ export default function Login(props: Props) {
             </p>
           );
         })}
-        <form className={loginStyles.loginForm}>
+        <form
+          className={loginStyles.loginForm}
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           <h1>Log in</h1>
           <label>
             <span>Username</span>

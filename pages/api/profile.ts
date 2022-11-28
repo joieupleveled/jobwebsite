@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getValidSessionByToken } from '../../database/sessions';
 import { getUserBySessionToken } from '../../database/users';
@@ -13,8 +11,7 @@ export default async function handler(
     const session =
       request.cookies.sessionToken &&
       (await getValidSessionByToken(request.cookies.sessionToken));
-    console.log('request.cookies.sessionToken', request.cookies.sessionToken);
-
+    console.log('sessionprofile', session);
     if (!session) {
       response
         .status(400)
@@ -24,7 +21,6 @@ export default async function handler(
 
     // 2. Get the user from the token
     const user = await getUserBySessionToken(session.token);
-    console.log('user1', user);
 
     if (!user) {
       response
@@ -32,7 +28,7 @@ export default async function handler(
         .json({ errors: [{ message: 'Session token not valid' }] });
       return;
     }
-    console.log('user', user);
+
     // return the user from the session token
     response.status(200).json({ user: user });
   } else {

@@ -59,7 +59,12 @@ export default function Register(props: Props) {
         <meta name="description" content="Register new users" />
       </Head>
       <div className={registerStyles.container}>
-        <form className={registerStyles.registerForm}>
+        <form
+          className={registerStyles.registerForm}
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           <h1>Register new user</h1>
           {errors.map((error) => {
             return (
@@ -77,7 +82,7 @@ export default function Register(props: Props) {
           })}
 
           <label>
-            <span>username</span>
+            <span>Username</span>
             <input
               value={username}
               onChange={(event: any) => {

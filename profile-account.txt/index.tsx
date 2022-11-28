@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import { getUserBySessionToken, User } from '../database/users';
 
 type Props = {
@@ -16,6 +15,7 @@ export default function UserProfile(props: Props) {
           <meta name="description" content="User not found" />
         </Head>
         <h1>404 - User not found</h1>
+        Better luck next time
       </>
     );
   }
@@ -30,10 +30,11 @@ export default function UserProfile(props: Props) {
       <hr />
       <h3>Username: {props.user.username}</h3>
       <br />
-
-      <Link href="/addjobs">
-        <button>Change password</button>
-      </Link>
+      <button className="btn-primary">Add a job</button>
+      <button className="btn-primary">Add a job</button>
+      <button className="btn-primary">Add a job</button>
+      <button>Edit information</button>
+      <button>Change password</button>
     </>
   );
 }

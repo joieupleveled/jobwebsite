@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -58,9 +57,14 @@ export default function SingleJob(props: Props) {
 
       <h2>{props.job.title}</h2>
       <div>Id: {props.job.company}</div>
+      <div>Title: {props.job.title}</div>
       <div>Type: {props.job.type}</div>
+      <div>Location: {props.job.location}</div>
       <div>Salary: {props.job.salary}</div>
       <div>Description: {props.job.description}</div>
+      <div>
+        <button className="btn-primary">Apply now</button>
+      </div>
     </div>
   );
 }

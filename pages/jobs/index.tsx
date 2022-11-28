@@ -16,7 +16,7 @@ export default function Jobs(props: Props) {
         <title>Jobs</title>
         <meta name="Description" content="List page of all jobs" />
       </Head>
-      <h1>Listed Jobs</h1>
+      <h1 className={css.h1}>Listed Jobs</h1>
 
       {props.jobs.map((job) => {
         return (
@@ -26,17 +26,15 @@ export default function Jobs(props: Props) {
                 <div>
                   <Link href={`/jobs/${job.id}`}>{job.title}</Link>
                 </div>
-                <h3>{job.company}</h3>
-                <h2>{job.title}</h2>
-                <div>
-                  <span>{job.type}</span>
-                  <div>
-                    <span>{job.location}</span>
 
+                <h3>Company: {job.company}</h3>
+                <div>
+                  <span>Job Type: {job.type}</span>
+                  <div>
+                    <span>Job Location: {job.location}</span>
                     <p>Annual Salary: EUR {job.salary}</p>
-                    <p>{job.description}</p>
+
                     <div>
-                      <div></div>
                       <button className={css.apply}>
                         {' '}
                         <a href={`/jobs/${job.id}`}>Learn more</a>
