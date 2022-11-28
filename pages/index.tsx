@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Head from 'next/head';
 
 const homepageStyle = css`
   background-image: url('/photographer.jpg');
@@ -34,16 +35,14 @@ const bgtext = css`
 export default function Home() {
   return (
     <>
-      <head>
+      <Head>
         <title>Landing page</title>
-      </head>
+      </Head>
 
       <div css={homepageStyle}>
-        <div>
-          <h1 css={bgtext}>Discover new opportunites or post a new one!</h1>
-          <p>And I'm a Photographer</p>
-        </div>
+        <p>And I'm a Photographer</p>
       </div>
+      <h1 css={bgtext}>Discover new opportunites or post a new one!</h1>
     </>
   );
 }

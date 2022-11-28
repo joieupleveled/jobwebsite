@@ -19,7 +19,7 @@ export default function Header(props) {
             <span>Jobs</span>
           </div>
         </Link>
-        {}
+
         {props.user ? (
           <>
             <Link href="/logout">
