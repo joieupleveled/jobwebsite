@@ -3,13 +3,13 @@ Next.js jobwebsite
 Description
 This job website is was created with Next.js. It has:
 
-a home page,
-a job list page,
-a page for each single item with a description and price
-a login page,
-a logout page,
-a add a job page,
-a registration page
+-a home page,
+-a job list page,
+-a page for each single item with a description and price
+-a login page,
+-a logout page,
+-a add a job page,
+-a registration page
 
 Technologies used:
 
@@ -19,6 +19,16 @@ Ley
 dotenv
 Emotion
 GitHub Actions
+
+Next.js
+React
+Postgres
+PSQL
+Emotion
+Jest unit tests
+Cypress E2E tests
+Typescript
+Bootstrap
 
 First, run the development server:
 
