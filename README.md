@@ -1,4 +1,4 @@
-# Next.js jobwebsite
+Next.js jobwebsite
 
 ## Description
 
@@ -18,11 +18,12 @@ This job website is was created with Next.js. It has:
 - Node
 - Typescript
 - Bcrypt
-- Postgresql
+- Postgres.js
 - Ley
 - Dotenv
 - Emotion
-- Git, GitHub
+- Git
+- GitHub
 - PSQL
 - js-cookie
 - Sharp
