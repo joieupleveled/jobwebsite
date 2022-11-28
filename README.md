@@ -9,7 +9,7 @@ a page for each single item with a description and price
 a login page,
 a logout page,
 a add a job page,
-a registration page.
+a registration page
 
 Technologies used:
 
