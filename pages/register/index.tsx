@@ -92,7 +92,7 @@ export default function Register(props: Props) {
           </label>
           <br />
           <label>
-            <span>password</span>
+            <span>Password</span>
             <input
               value={password}
               onChange={(event) => {

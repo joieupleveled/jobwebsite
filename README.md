@@ -1,26 +1,47 @@
-Next.js jobwebsite
+# Next.js jobwebsite
 
-Description
+## Description
+
 This job website is was created with Next.js. It has:
 
-a home page,
-a job list page,
-a page for each single item with a description and price
-a login page,
-a logout page,
-a add a job page,
-a registration page.
+- a home page
+- a job list page
+- a page for each single job with a type of employment, description, salary, location
+- a login page
+- a logout page
+- a add a job page
+- a registration page
 
-Technologies used:
+## Technologies used:
 
-Next.js
-Postgres.js
-Ley
-dotenv
-Emotion
-GitHub Actions
+- Next.js
+- Node
+- Typescript
+- Bcrypt
+- Postgresql
+- Ley
+- Dotenv
+- Emotion
+- Git, GitHub
+- PSQL
+- js-cookie
+- Sharp
+- Eslint
 
-First, run the development server:
+## Setup instructions
+
+- Clone the repo to your local machine with git clone <repo>
+- Setup the database by downloading and installing PostgreSQL
+- Create a user and a job database
+- Create a new file .env
+- Copy the environment variables from .env-example into .env
+- Replace the placeholders xxxxx with your username, password and name of database
+- Install dotenv-cli with yarn global add dotenv-cli
+- Run yarn install in your command line
+- Run the migrations with yarn migrate up
+- Start the server by running yarn dev
+
+## First, run the development server:
 
 ```bash
 npm run dev
