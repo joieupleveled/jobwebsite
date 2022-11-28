@@ -16,14 +16,21 @@ This job website is was created with Next.js. It has:
 ## Technologies used:
 
   - Next.js
+  - Node
   - Typescript
+  - Bcrypt
   - Postgres.js
   - Ley
-  - dotenv
+  - Dotenv
   - Emotion
   - Git
   - GitHub
   - PSQL
+  - js-cookie
+  - Sharp
+  - Eslint
+  
+  
 
 ## Setup instructions 
    - Clone the repo to your local machine with git clone <repo>
