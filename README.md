@@ -5,12 +5,24 @@
 This job website is was created with Next.js. It has:
 
 - a home page
+![image](https://user-images.githubusercontent.com/108072532/215479644-a580023c-0b3a-42a2-88ec-6d9b115c0db3.png)
+
 - a job list page
-- a page for each single job with a type of employment, description, salary, location
+![image](https://user-images.githubusercontent.com/108072532/215479951-79d1d3d0-f74c-4f79-953e-c6040722e631.png)
+
+- a single job list page
+![image](https://user-images.githubusercontent.com/108072532/215480134-04e85323-ada4-415b-9b21-335b345159fd.png)
+or each single job with a type of employment, description, salary, location
+
 - a login page
-- a logout page
+![image](https://user-images.githubusercontent.com/108072532/215480722-91440f32-fbe1-4244-8abf-c07da9910ea6.png)
+
 - a add a job page
+![image](https://user-images.githubusercontent.com/108072532/215481417-0407f2a4-bb4a-472a-9317-2105f385c220.png)
+
 - a registration page
+![image](https://user-images.githubusercontent.com/108072532/215480924-13c0ffdd-e735-4b88-881b-a72b881d971a.png)
+
 
 ## Technologies used:
 
